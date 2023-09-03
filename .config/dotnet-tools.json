@@ -2,12 +2,6 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "fake-cli": {
-      "version": "5.20.4",
-      "commands": [
-        "fake"
-      ]
-    },
     "nuke.globaltool": {
       "version": "7.0.4",
       "commands": [
