@@ -16,9 +16,9 @@
       public const string JavaScriptUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js";
 
       /// <summary>  
-      /// Default HTTP header key for Turnstile response.
+      /// Default form key for the Turnstile response.
       /// </summary>
-      public const string ClientResponseKey = "cf-turnstile-response";
+      public const string ClientResponseFormKey = "cf-turnstile-response";
    }
 
 

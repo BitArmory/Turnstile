@@ -48,7 +48,7 @@ namespace BitArmory.Turnstile
       /// <summary>
       /// Validate Turnstile <paramref name="clientToken"/> using your secret.
       /// </summary>
-      /// <param name="clientToken">Required. The user response token provided by the Turnstile client-side integration on your site. The <seealso cref="Constants.ClientResponseKey"/> value pulled from the client with the request headers or hidden form field.</param>
+      /// <param name="clientToken">Required. The user response token provided by the Turnstile client-side integration on your site. The <seealso cref="Constants.ClientResponseFormKey"/> value pulled from the hidden HTML Form field.</param>
       /// <param name="remoteIp">Optional. The remote IP of the client</param>
       /// <param name="siteSecret">Required. The server-side secret: v2 secret, invisible secret, or android secret. The shared key between your site and Turnstile.</param>
       /// <param name="cancellationToken">Async cancellation token.</param>
