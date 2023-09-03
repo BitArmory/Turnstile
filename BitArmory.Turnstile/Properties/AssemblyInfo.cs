@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Bit Armory Inc © 2015")]
 [assembly: AssemblyVersion("0.0.0")]
 [assembly: AssemblyFileVersion("0.0.0")]
-[assembly: AssemblyInformationalVersion("0.0.0-localbuild built on 2015-01-01 00:00:00Z UTC")]
+[assembly: AssemblyInformationalVersion("0.0.0-localbuild built on 2015-01-01 00:00:00Z")]
 [assembly: AssemblyTrademark("MIT License")]
 [assembly: AssemblyDescription("https://github.com/BitArmory/Turnstile")]
 [assembly: InternalsVisibleTo("BitArmory.Turnstile.Tests")]
@@ -21,7 +21,7 @@ namespace System {
         internal const System.String AssemblyCopyright = "Bit Armory Inc © 2015";
         internal const System.String AssemblyVersion = "0.0.0";
         internal const System.String AssemblyFileVersion = "0.0.0";
-        internal const System.String AssemblyInformationalVersion = "0.0.0-localbuild built on 2015-01-01 00:00:00Z UTC";
+        internal const System.String AssemblyInformationalVersion = "0.0.0-localbuild built on 2015-01-01 00:00:00Z";
         internal const System.String AssemblyTrademark = "MIT License";
         internal const System.String AssemblyDescription = "https://github.com/BitArmory/Turnstile";
         internal const System.String InternalsVisibleTo = "BitArmory.Turnstile.Tests";

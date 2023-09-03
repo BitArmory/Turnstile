@@ -78,7 +78,7 @@ partial class Build
       var path = RootDirectory / project.Name / "Properties" / "AssemblyInfo.cs";
       var fullVersion = bti.FullVersion;
       var version = BuildContext.GetVersionWithoutPreReleeaseName(fullVersion);
-      var infoVersion = $"{fullVersion} built on {buildTimeUtc:u} UTC";
+      var infoVersion = $"{fullVersion} built on {buildTimeUtc:u}";
       var copyright = $"Bit Armory Inc © {buildTimeUtc.Year}";
       var title = project.GetProperty("NukeProjectTitle");
       var attrs = new List<AssemblyInfo.Attribute>
