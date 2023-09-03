@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>A simple, no-drama, Cloudflare Turnstile validation library that works with ASP.NET Core, Razor Pages, MVC 5, and WebForms.</Description>
+    <NukeProjectTitle>BitArmory.Turnstile for .NET</NukeProjectTitle>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>0.0.0-localbuild</Version>
+    <Authors>Brian Chavez</Authors>
+    <TargetFrameworks>net45;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>BitArmory.Turnstile.ruleset</CodeAnalysisRuleSet>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyName>BitArmory.Turnstile</AssemblyName>
+    <PackageId>BitArmory.Turnstile</PackageId>
+    <PackageTags>cloudflare;turnstile;captcha;asp.net;aspnet;mvc;core;razor;razorpages;webforms;security;bot;anti-spam;validation;recpatcha</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/BitArmory/Turnstile/master/docs/Turnstile.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/BitArmory/Turnstile</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/BitArmory/Turnstile/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/BitArmory/Turnstile</RepositoryUrl>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!--Source Link Settings-->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>false</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);STANDARD;STANDARD20</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+    <DefineConstants>$(DefineConstants);STANDARD;STANDARD13</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Roslynator.Analyzers" Version="1.8.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+</Project>
