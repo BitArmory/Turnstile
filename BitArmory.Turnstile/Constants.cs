@@ -23,46 +23,52 @@
 
 
    /// <summary>
-   /// The following sitekeys and secret keys are available for testing. 
-   /// It is recommended that you use these keys in your development environment
-   /// to ensure the challenges running in Turnstile do not conflict with your developer tools.
+   /// The following site keys are available for testing. These site keys are for use
+   /// with client-side HTML rendering of the `class="cf-turnstile" data-sitekey=____` widget.
    /// Source: https://developers.cloudflare.com/turnstile/reference/testing/
    /// </summary>
-   public static class TestingKeysAndSecrets
+   public static class TestingSiteKeys
    {
       /// <summary>
       /// A site key for a visible captcha widget that always passes validation
       /// </summary>
-      public const string SiteKeyAlwaysPassesVisible = "1x00000000000000000000AA";
+      public const string AlwaysPassesVisible = "1x00000000000000000000AA";
       /// <summary>
       /// A site key for a visible captcha widget that always blocks validation
       /// </summary>
-      public const string SiteKeyAlwaysBlocksVisible = "2x00000000000000000000AB";
+      public const string AlwaysBlocksVisible = "2x00000000000000000000AB";
       /// <summary>
       /// A site key for an invisible captcha widget that always passes validation
       /// </summary>
-      public const string SiteKeyAlwaysPassesInvisible = "1x00000000000000000000BB";
+      public const string AlwaysPassesInvisible = "1x00000000000000000000BB";
       /// <summary>
       /// A site key for an invisible captcha widget that always blocks validation
       /// </summary>
-      public const string SiteKeyAlwaysBlocksInvisible = "2x00000000000000000000BB";
+      public const string AlwaysBlocksInvisible = "2x00000000000000000000BB";
       /// <summary>
       /// A site key for a visible captcha widget that forces an interactive challenge
       /// </summary>
-      public const string SiteKeyForcesInteractiveChallengeVisible = "3x00000000000000000000FF";
+      public const string ForcesInteractiveChallengeVisible = "3x00000000000000000000FF";
+   }
 
-
+   /// <summary>
+   /// The following secret keys are available for testing. These site secret keys are for use
+   /// with the server-side 'siteSecret' parameter for <see cref="TurnstileService.VerifyAsync(string, string, string, System.Threading.CancellationToken)" />
+   /// Source: https://developers.cloudflare.com/turnstile/reference/testing/
+   /// </summary>
+   public static class TestingSecretKeys
+   {
       /// <summary>
-      /// A site SECRET (on the server-side verify) that always passes.
+      /// A site SECRET (on server-side verify) that always passes.
       /// </summary>
-      public const string SecretKeyAlwaysPasses = "1x0000000000000000000000000000000AA";
+      public const string VerifyAlwaysPasses = "1x0000000000000000000000000000000AA";
       /// <summary>
-      /// A site SECRET (on the server-side verify) that always fails.
+      /// A site SECRET (on server-side verify) that always fails.
       /// </summary>
-      public const string SecretKeyAlwaysFails = "2x0000000000000000000000000000000AA";
+      public const string VerifyAlwaysFails = "2x0000000000000000000000000000000AA";
       /// <summary>
-      /// A site SECRET (on the server-side verify) that always fails with 'token already spent' error.
+      /// A site SECRET (on server-side verify) that always fails with 'token already spent' error.
       /// </summary>
-      public const string SecretKeyTokenAlreadySpent = "3x0000000000000000000000000000000AA";
+      public const string VerifyTokenAlreadySpentError = "3x0000000000000000000000000000000AA";
    }
 }
