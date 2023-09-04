@@ -49,17 +49,26 @@ namespace BitArmory.Turnstile
       /// Validate Turnstile <paramref name="clientToken"/> using your secret.
       /// </summary>
       /// <param name="clientToken">Required. The user response token provided by the Turnstile client-side integration on your site. The <seealso cref="Constants.ClientResponseFormKey"/> value pulled from the hidden HTML Form field.</param>
-      /// <param name="remoteIp">Optional. The remote IP of the client</param>
       /// <param name="siteSecret">Required. The server-side secret: v2 secret, invisible secret, or android secret. The shared key between your site and Turnstile.</param>
-      /// <param name="cancellationToken">Async cancellation token.</param>
-      public virtual async Task<TurnstileResponse> VerifyAsync(string clientToken, string remoteIp, string siteSecret, CancellationToken cancellationToken = default)
+      /// <param name="remoteIp">Optional. The remote IP of the client</param>
+      /// <param name="idempotencyKey">Optional. The optional UUID to be associated with the response. 
+      /// Normally, a response may only be validated once. That is, if the same response is presented twice, the second and each subsequent
+      /// request will generate an error stating that the response has already been consumed. If an application requires 
+      /// to retry failed requests, it must utilize the idempotency functionality. You can do so by providing a UUID as
+      /// the idempotencyKey parameter when initially validating the response and the same UUID 
+      /// with any subsequent request for that response.</param>
+      /// <param name="cancellationToken">Optional. Async cancellation token.</param>
+      public virtual async Task<TurnstileResponse> VerifyAsync(string clientToken, string siteSecret, string remoteIp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
       {
          if( string.IsNullOrWhiteSpace(siteSecret) ) throw new ArgumentException("The secret must not be null or empty", nameof(siteSecret));
          if( string.IsNullOrWhiteSpace(clientToken) ) throw new ArgumentException("The client response must not be null or empty", nameof(clientToken));
-         if( string.IsNullOrWhiteSpace(remoteIp) ) throw new ArgumentException("The remote ip of the client must be spec specified.", nameof(remoteIp));
+         if( remoteIp is not null && !remoteIp.Contains(".") && !remoteIp.Contains(":") )
+         {
+            throw new ArgumentException("The remote ip parameter must be formatted in IPv4 '.' or IPv6 ':' syntax.", nameof(remoteIp));
+         }
 
 
-         var form = PrepareRequestBody(clientToken, siteSecret, remoteIp);
+         var form = PrepareRequestBody(clientToken, siteSecret, remoteIp, idempotencyKey);
 
          var response = await this.HttpClient.PostAsync(verifyUrl, form, cancellationToken)
             .ConfigureAwait(false);
@@ -85,6 +94,9 @@ namespace BitArmory.Turnstile
                case "hostname":
                   result.HostName = kv.Value;
                   break;
+               case "cdata":
+                  result.CData = kv.Value;
+                  break;
                case "error-codes" when kv.Value is JsonArray errors:
                {
                   result.ErrorCodes = errors.Children
@@ -109,14 +121,22 @@ namespace BitArmory.Turnstile
       /// <param name="secret"></param>
       /// <param name="remoteIp"></param>
       /// <returns></returns>
-      protected FormUrlEncodedContent PrepareRequestBody(string clientResponse, string secret, string remoteIp)
+      protected FormUrlEncodedContent PrepareRequestBody(string clientResponse, string secret, string remoteIp, string idempotencyKey)
       {
          var form = new List<KeyValuePair<string, string>>()
             {
                new KeyValuePair<string, string>("response", clientResponse),
-               new KeyValuePair<string, string>("secret", secret),
-               new KeyValuePair<string, string>("remoteip", remoteIp)
+               new KeyValuePair<string, string>("secret", secret)
             };
+
+         if( !string.IsNullOrWhiteSpace(remoteIp) )
+         {
+            form.Add(new KeyValuePair<string, string>("remoteip", remoteIp));
+         }
+         if( !string.IsNullOrWhiteSpace(idempotencyKey) )
+         {
+            form.Add(new KeyValuePair<string, string>("idempotency_key", idempotencyKey));
+         }
 
          return new FormUrlEncodedContent(form);
       }
