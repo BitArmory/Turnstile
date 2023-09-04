@@ -137,6 +137,14 @@ public string GetClientIpAddress(){
 
 That's it! **Happy verifying!** :tada:
 
+Testing and Development Environment
+--------
+**Cloudflare Turnstile** has some convenient testing keys and secrets that respond/behave differently for various UI interactions and server-side verification responses to help test your website. Be sure to read the following testing documentation [here](https://developers.cloudflare.com/turnstile/reference/testing/).
+
+The testing keys and secrets can be used from the `TestingSiteKeys` and `TestingSecretKeys` constant classes:
+
+https://github.com/BitArmory/Turnstile/blob/1d59d2696526a7fafaacb55dcdac918bb1c895e5/BitArmory.Turnstile/Constants.cs#L30-L73
+
 Building
 --------
 * Download the source code.
