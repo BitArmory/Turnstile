@@ -147,12 +147,12 @@ partial class Build : NukeBuild
              }
           }
 
-          var bogusProjectMsb = NugetProject.GetMSBuildProject();
-          bogusProjectMsb.SetProperty("Version", "0.0.0-localbuild");
-          bogusProjectMsb.SetProperty("PackageReleaseNotes", string.Empty);
-          bogusProjectMsb.SetProperty("AssemblyOriginatorKeyFile", string.Empty);
-          bogusProjectMsb.SetProperty("SignAssembly", "false");
-          bogusProjectMsb.Save();
+          var mainProjectMsb = NugetProject.GetMSBuildProject();
+          mainProjectMsb.SetProperty("Version", "0.0.0-localbuild");
+          mainProjectMsb.SetProperty("PackageReleaseNotes", string.Empty);
+          mainProjectMsb.SetProperty("AssemblyOriginatorKeyFile", string.Empty);
+          mainProjectMsb.SetProperty("SignAssembly", "false");
+          mainProjectMsb.Save();
 
           var testProjectMsb = TestProject.GetMSBuildProject();
           testProjectMsb.SetProperty("AssemblyOriginatorKeyFile", string.Empty);
@@ -201,16 +201,16 @@ partial class Build : NukeBuild
        //Debugger.Launch();
        MakeBuildInfo(this.NugetProject, bti);
 
-       var bogusProjectMsb = this.NugetProject.GetMSBuildProject();
-       bogusProjectMsb.SetProperty("Version", fullVersion);
+       var mainProjectMsb = this.NugetProject.GetMSBuildProject();
+       mainProjectMsb.SetProperty("Version", fullVersion);
 
        if( BuildContext.IsReleaseBuild )
        {
           var releaseNotes = History.NugetText(Files.History, GitHubUrl);
-          bogusProjectMsb.SetProperty("PackageReleaseNotes", releaseNotes);
+          mainProjectMsb.SetProperty("PackageReleaseNotes", releaseNotes);
        }
 
-       bogusProjectMsb.Save();
+       mainProjectMsb.Save();
     });
 
 
@@ -256,10 +256,10 @@ partial class Build : NukeBuild
 
        Assert.FileExists(Files.SnkFile);
 
-       var bogusProjectMsb = NugetProject.GetMSBuildProject();
-       bogusProjectMsb.SetProperty("AssemblyOriginatorKeyFile", Files.SnkFile);
-       bogusProjectMsb.SetProperty("SignAssembly", "true");
-       bogusProjectMsb.Save();
+       var mainProjectMsb = NugetProject.GetMSBuildProject();
+       mainProjectMsb.SetProperty("AssemblyOriginatorKeyFile", Files.SnkFile);
+       mainProjectMsb.SetProperty("SignAssembly", "true");
+       mainProjectMsb.Save();
 
        var testProjectMsb = TestProject.GetMSBuildProject();
        testProjectMsb.SetProperty("AssemblyOriginatorKeyFile", Files.SnkFile);
