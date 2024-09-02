@@ -42,7 +42,7 @@ deploy:
       prerelease: $(IsPreRelease)
       artifact: Zip, NuGet, Symbols
       auth_token:
-          secure: 6IYVNU+ZMER/LbYbvSxl7QkF0tesUx3j/qUc6rZqPjqLSNUHaUh1widD9SpmgVrGey6LirCJY5ZjE7kQRgNCg3iFcX7p1W23k80OWv8/tz0pokYqx2CC3uYPglBDFita
+          secure: 6IYVNU+ZMER/LbYbvSxl7d8w1E01gFdL5D2TOIjxuaymeVjK1y7w3IZ9EG55aAI5SvhvCtzqWrhdVzHA1YChb4UT5j1Sm+MAVmELYJ4jNEw8UmtbE6W0M4/DGLUoV1+p
       on:
           branch: master
           appveyor_repo_tag_name: /v\d+\.\d+\.\d+/ 
@@ -53,7 +53,7 @@ deploy:
       symbol_server:
       skip_symbols: false
       api_key:
-          secure: j6cozrYrOfub62RbHIALzCqMdGCUNVOTkEX9Jzi7la7BEmqcDgpaUbr8kR/QRh/m
+          secure: +DJSHprLyYrLAXOSgQ19wYR4sev186T5UJoWdkc9BixQWyg4p+IjRQ3Rzt7oynwl
       artifact: NuGet, Symbols
       on:
           branch: master
