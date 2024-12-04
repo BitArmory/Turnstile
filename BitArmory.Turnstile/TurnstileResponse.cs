@@ -42,10 +42,16 @@ namespace BitArmory.Turnstile
       /// The hostname of the site where the Turnstile was solved
       /// </summary>
       public string HostName { get; set; }
+      
+       /// <summary>
+       /// The customer widget identifier passed to the widget on the client side. This is used to differentiate
+       /// widgets using the same sitekey in analytics. Its integrity is protected from modifications by an attacker.
+       /// </summary>
+      public string Action { get; set; }
 
       /// <summary>
       /// The customer data passed to the widget on the client side. This can be used by the customer
-      /// to convey state. It is integrity protected by modifications from an attacker.
+      /// to convey state. Its integrity is protected from modifications by an attacker.
       /// </summary>
       public string CData { get; set; }
    }

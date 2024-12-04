@@ -97,6 +97,9 @@ namespace BitArmory.Turnstile
                case "cdata":
                   result.CData = kv.Value;
                   break;
+               case "action":
+                   result.Action = kv.Value;
+                   break;
                case "error-codes" when kv.Value is JsonArray errors:
                {
                   result.ErrorCodes = errors.Children
