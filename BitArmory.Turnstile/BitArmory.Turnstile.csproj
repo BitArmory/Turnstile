@@ -13,7 +13,7 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyName>BitArmory.Turnstile</AssemblyName>
     <PackageId>BitArmory.Turnstile</PackageId>
-    <PackageTags>cloudflare;turnstile;captcha;asp.net;aspnet;mvc;core;razor;razorpages;webforms;security;bot;anti-spam;validation;recpatcha</PackageTags>
+    <PackageTags>cloudflare;turnstile;captcha;asp.net;aspnet;mvc;core;razor;razorpages;webforms;security;bot;anti-spam;validation;recaptcha</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/BitArmory/Turnstile</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/BitArmory/Turnstile/master/LICENSE</PackageLicenseUrl>
